@@ -365,29 +365,37 @@ async function loadBackground(){
 async function loadVideos(){
   const grid=$("videoGrid");
   grid.replaceChildren();
+  // These are the two regular videos shown in your Storage screenshots.
+  // The 12:01 PM video stays only in the separate birthday surprise popup.
   const candidates=[
-    {file:"edit1.mp4",title:"A Memory Made with Love",message:"A little video kept especially for you."},
-    {file:"edit2.mp4",title:"Another Little Piece of Us",message:"Some memories become special simply because they are ours."}
+    {file:"WhatsApp Video 2026-10-24 at 10.56.43 AM.mp4",stamp:"10.56.43",title:"A Memory Made with Love",message:"A little video kept especially for you."},
+    {file:"WhatsApp Video 2026-10-24 at 10.56.59 AM.mp4",stamp:"10.56.59",title:"Another Little Piece of Us",message:"Some memories become special simply because they are ours."}
   ];
-
   for(const item of candidates){
-    const file=fileByName(item.file);
-    if(!file) continue;
+    const file=fileByName(item.file) || currentFiles.find(f => f.name.includes(item.stamp) && /\.(mp4|webm|mov|m4v)$/i.test(f.name));
     const card=document.createElement("article");
     card.className="video-card";
     const video=document.createElement("video");
     video.controls=true;
     video.playsInline=true;
     video.preload="metadata";
+    video.setAttribute("aria-label",item.title);
     const heading=document.createElement("h3");
     heading.textContent=item.title;
     const description=document.createElement("p");
     description.textContent=item.message;
+    if(!file){
+      description.textContent="Video file not found in Storage. Please check its filename.";
+      card.append(video,heading,description);
+      grid.append(card);
+      continue;
+    }
     try{
-      video.src=await signedUrl(item.file);
+      video.src=await signedUrl(file.name);
+      video.load();
     }catch(e){
       description.textContent="Could not load video. Check Storage permissions.";
-      console.error(e);
+      console.error("Video loading failed:",file.name,e);
     }
     card.append(video,heading,description);
     grid.append(card);
