@@ -1,1 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#240817">
+<title>For My Shaiduuuuuu ❤️</title>
+<meta name="description" content="A little birthday surprise made with love, memories and duas for Shaheeda.">
+<style>
+:root{--pink:#ff8cb8;--gold:#f8d9a0;--wine:#260719;--glass:rgba(255,239,247,.09)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#190612;color:#fff2f7;font-family:Georgia,"Times New Roman",serif;overflow-x:hidden}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+#app{min-height:100vh}
+.bg{position:fixed;inset:0;z-index:-3;background:linear-gradient(180deg,rgba(26,4,19,.22),rgba(25,3,16,.82)),url("homepage-bg.png") center/cover no-repeat}
+.bg:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,transparent 5%,rgba(17,1,12,.48) 100%)}
+#particles{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.particle{position:absolute;bottom:-50px;animation:rise linear infinite;opacity:0;color:#ffb0cf;text-shadow:0 0 16px #ff6fae}
+@keyframes rise{to{transform:translate3d(var(--drift),-115vh,0) rotate(360deg);opacity:0}}
+@keyframes pulse{50%{transform:scale(1.07);filter:drop-shadow(0 0 24px #ff6da7)}}
+@keyframes appear{from{opacity:0;transform:translateY(22px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes shimmer{0%,100%{box-shadow:0 0 18px #ff78ae20}50%{box-shadow:0 0 38px #ff78ae55}}
+@keyframes float{50%{transform:translateY(-9px) rotateY(4deg)}}
+.hidden{display:none!important}
+.wrap{width:min(1100px,92%);margin:auto}
+.topbar{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:19px 5%;border-bottom:1px solid #ffbfd522;background:#21071755;backdrop-filter:blur(15px)}
+.brand{letter-spacing:2px;color:var(--gold);font-size:.9rem}
+.sound{background:#ffffff12;border:1px solid #ffffff30;color:white;padding:10px 14px;border-radius:30px}
+section{padding:64px 0}
+.hero{min-height:86vh;display:grid;place-items:center;text-align:center;padding:65px 0 85px}
+.hero-card{width:min(820px,100%);padding:clamp(24px,5vw,58px);border:1px solid #ffbfd52e;border-radius:28px;background:linear-gradient(145deg,#ffffff12,#300b2055);backdrop-filter:blur(13px);box-shadow:0 28px 100px #10020d70;animation:appear 1.2s ease both}
+.eyebrow{text-transform:uppercase;letter-spacing:4px;color:var(--gold);font-size:.76rem}
+h1{font-size:clamp(2.5rem,8vw,5.6rem);line-height:1.04;margin:20px 0;color:#fff1f7;text-shadow:0 4px 35px #ff4e9870}
+h1 span{display:block;color:var(--pink);font-style:italic}
+.lead{max-width:600px;margin:20px auto;line-height:1.9;color:#f8dce8;font-size:1.08rem}
+.heart3d{display:inline-block;font-size:65px;filter:drop-shadow(0 12px 20px #ff4f9970);animation:pulse 2.6s ease-in-out infinite}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 23px;border:1px solid #ffb5d1;border-radius:40px;background:linear-gradient(135deg,#ff8bb8,#b63c76);color:white;font-weight:bold;box-shadow:0 10px 30px #ff4f9933;transition:.25s}
+.btn:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 14px 35px #ff4f9966}
+.btn.secondary{background:#ffffff12;border-color:#ffffff30}
+h2{text-align:center;font-size:clamp(2rem,5vw,3.3rem);margin:0 0 13px}
+.section-sub{text-align:center;max-width:640px;line-height:1.8;color:#e8c9d7;margin:0 auto 35px}
+.gold{color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.card{background:linear-gradient(145deg,#ffffff13,#ffffff05);border:1px solid #ffd5e322;border-radius:22px;overflow:hidden;box-shadow:0 18px 55px #09010855;backdrop-filter:blur(9px);animation:shimmer 6s ease-in-out infinite;transition:transform .35s}
+.card:hover{transform:translateY(-5px) perspective(800px) rotateX(1deg)}
+.photo{width:100%;height:410px;object-fit:cover;display:block;background:#38152b}
+.card-copy{padding:20px 21px 23px}
+.card-copy h3{font-size:1.35rem;color:var(--gold);margin:0 0 10px}
+.card-copy p{line-height:1.8;color:#f5dce7;margin:0}
+.number{color:#ff91ba;letter-spacing:2px;font-size:.75rem;text-transform:uppercase;margin-bottom:9px}
+.video-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.video-card{padding:15px;border:1px solid #ffd5e322;border-radius:22px;background:#ffffff0c;backdrop-filter:blur(10px)}
+.video-card video{width:100%;max-height:560px;background:#0c0309;border-radius:14px;display:block}
+.video-card h3{color:var(--gold);margin:16px 4px 8px}
+.video-card p{line-height:1.7;color:#efcfde;margin:0 4px 12px}
+.letter{max-width:800px;margin:auto;padding:clamp(23px,5vw,48px);border:1px solid #f5d29c66;border-radius:25px;background:linear-gradient(140deg,#fff0f510,#5b14304a);box-shadow:0 25px 75px #0004;line-height:2;font-size:1.06rem}
+.letter .salute{text-align:center;color:var(--gold);font-size:1.7rem}
+.signature{text-align:right;color:var(--pink);font-style:italic;font-size:1.4rem}
+.reply{max-width:700px;margin:auto;padding:clamp(20px,4vw,36px);border:1px solid #ffc2d833;border-radius:24px;background:#210818aa;backdrop-filter:blur(12px)}
+label{display:block;margin:15px 0 8px;color:var(--gold)}
+input,textarea{width:100%;border:1px solid #ffbfd544;border-radius:12px;background:#ffffff0c;color:white;padding:13px;outline:none}
+input:focus,textarea:focus{border-color:var(--pink)}
+textarea{min-height:135px;resize:vertical;line-height:1.6}
+.hint{color:#dcb9cb;font-size:.85rem;line-height:1.6}
+footer{text-align:center;padding:35px 15px 50px;color:#e5bdcf;line-height:1.9}
+footer strong{color:var(--gold)}
+.login-screen{position:fixed;inset:0;z-index:10;display:grid;place-items:center;padding:20px;background:linear-gradient(#1b0515a8,#1b0515e8),url("homepage-bg.png") center/cover}
+.login-card{width:min(450px,100%);padding:clamp(25px,6vw,43px);text-align:center;border:1px solid #ffcee644;border-radius:27px;background:#23091bd9;backdrop-filter:blur(18px);box-shadow:0 25px 90px #0009;animation:appear .9s ease both}
+.login-card .heart3d{font-size:55px}
+.login-card h2{color:var(--pink);margin:13px 0}
+.login-card p{line-height:1.7;color:#f3d7e5}
+.login-card label{text-align:left}
+.login-card .btn{width:100%;margin-top:20px}
+.error{color:#ff9ab5;min-height:24px;margin-top:12px}
+.tiny{font-size:.8rem;color:#cfa9bc}
+#toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);padding:13px 18px;border:1px solid #ffc0d8;border-radius:30px;background:#310d25;color:white;z-index:20;display:none;max-width:90%;text-align:center}
+@media(min-width:850px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.photo{height:350px}}
+@media(max-width:650px){section{padding:47px 0}.grid,.video-grid{grid-template-columns:1fr}.photo{height:auto;max-height:520px;object-fit:contain;background:#14060f}.hero{min-height:82vh;padding:42px 0 55px}.hero-card{border-radius:23px}.topbar{padding:14px 4%}.brand{font-size:.74rem;letter-spacing:1px}.lead{font-size:1rem}.card-copy{padding:18px}.video-card{padding:11px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div id="particles" aria-hidden="true"></div>
 
+<!-- Romantic entry screen: this is a playful gate, not secure authentication.
+     Do not put real passwords in public website source code. -->
+<div class="login-screen" id="loginScreen">
+  <form class="login-card" id="loginForm">
+    <div class="heart3d">♡</div>
+    <div class="eyebrow">A little surprise made with love</div>
+    <h2>For Shaiduuuuuu</h2>
+    <p>Someone has prepared a little world just for you, my princess. Ready to open it? ✨</p>
+    <label for="email">Your email</label>
+    <input id="email" type="email" autocomplete="username" placeholder="Enter your email" required>
+    <label for="password">Your password</label>
+    <input id="password" type="password" autocomplete="current-password" placeholder="Enter the password" required>
+    <button class="btn" type="submit">Open My Surprise ♡</button>
+    <div class="error" id="loginError" role="status"></div>
+    <div class="tiny">Made especially for you, with love and duas.</div>
+  </form>
+</div>
+
+<div id="website" class="hidden">
+  <header class="topbar">
+    <div class="brand">♡ A LITTLE WORLD FOR SHAIDUUUUUU</div>
+    <button class="sound" id="motionBtn" type="button">♡ Our memories</button>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="hero-card">
+        <div class="eyebrow">25 October · Your special day</div>
+        <div class="heart3d">♥</div>
+        <h1>Happy Birthday,<span>My Princess</span></h1>
+        <p class="lead">Assalamu alaikum, my sweetest Shaiduuuuuu. This little world is a small gift from my heart to yours. Every memory, every word and every dua here is for you. ❤️</p>
+        <button class="btn" onclick="document.getElementById('memories').scrollIntoView({behavior:'smooth'})">Enter Our Memories ↓</button>
+      </div>
+    </section>
+
+    <section id="memories">
+      <div class="wrap">
+        <h2>Our Little <span class="gold">Memories</span></h2>
+        <p class="section-sub">Ten pictures, ten little reminders of how special you are to me. I have kept every original photo as it was uploaded.</p>
+        <div class="grid" id="photoGrid"></div>
+      </div>
+    </section>
+
+    <section id="videos">
+      <div class="wrap">
+        <h2>Made <span class="gold">Just for You</span></h2>
+        <p class="section-sub">Take your time, my love. These videos carry moments and wishes I wanted you to have.</p>
+        <div class="video-grid">
+          <article class="video-card">
+            <video controls playsinline preload="metadata" poster="homepage-bg.png">
+              <source src="wishes.mp4" type="video/mp4">
+              Your browser cannot play this video.
+            </video>
+            <h3>My Birthday Wishes to You ♡</h3>
+            <p>My own words, my own voice, and a prayer for your happiness. I hope you feel every bit of love behind them.</p>
+          </article>
+          <article class="video-card">
+            <video controls playsinline preload="metadata" poster="homepage-bg.png">
+              <source src="edit1.mp4" type="video/mp4">
+              Your browser cannot play this video.
+            </video>
+            <h3>A Memory Made with Love</h3>
+            <p>One little edit for the moments that mean so much to me.</p>
+          </article>
+          <article class="video-card">
+            <video controls playsinline preload="metadata" poster="homepage-bg.png">
+              <source src="edit2.mp4" type="video/mp4">
+              Your browser cannot play this video.
+            </video>
+            <h3>Another Little Piece of Us</h3>
+            <p>Some memories become special simply because they are ours.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="letter">
+      <div class="wrap">
+        <h2>A Letter <span class="gold">From My Heart</span></h2>
+        <p class="section-sub">Read this slowly, princess. Every word comes with a dua for you.</p>
+        <div class="letter">
+          <div class="salute">Assalamu alaikum, my Shaiduuuuuu ♡</div>
+          <p>Happy, happy, happy returns of the day to my lovely princess. I may not always find the perfect words to explain how much you mean to me, but I hope this little gift makes you feel how special you are in my life.</p>
+          <p>May Allah make your dreams come true, make every difficult path easy for you, protect your health, calm your worries and fill your heart with peace and happiness. When life feels difficult, remember that you are capable of so much more than you realise. Keep believing in yourself and keep moving towards the dreams you carry in your heart.</p>
+          <p>I pray that Allah guides you, protects you and gives you the strength to achieve everything good you hope for. Please keep praying for me too, just as I pray for you. InshaAllah, may the future bring beautiful days, growth, happiness and many reasons to smile.</p>
+          <p>This website is only a small gift. The biggest thing I want you to know is that I love you so much. Take care of yourself, my princess, and never forget how precious your happiness is.</p>
+          <p>Once again, happy birthday, my sweetest Shaiduuuuuu. May Allah bless your new year of life with barakah, good health, peace and beautiful opportunities. Aameen. 🤍</p>
+          <div class="signature">Always with duas for you,<br>Fahiz ♡</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reply">
+      <div class="wrap">
+        <h2>Your Turn, <span class="gold">My Princess</span></h2>
+        <p class="section-sub">If this little surprise made you smile, I would love to hear what is in your heart. Write me a reply below. ♡</p>
+        <form class="reply" id="replyForm">
+          <label for="replyName">Your name or nickname</label>
+          <input id="replyName" type="text" maxlength="80" placeholder="My Shaiduuuuuu">
+          <label for="replyMessage">Your message for me</label>
+          <textarea id="replyMessage" maxlength="3000" required placeholder="Babyyyyyy, this is what I want to tell you..."></textarea>
+          <p class="hint">When you press the button, WhatsApp will open with your message prepared. Please press Send in WhatsApp to deliver it to Fahiz.</p>
+          <button class="btn" type="submit">Send My Reply on WhatsApp 💌</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div style="font-size:2rem;color:#ff8cb8">♥</div>
+    <strong>Happy Birthday, Shaiduuuuuu</strong><br>
+    Made with love, memories and duas by Fahiz.<br>
+    <span class="tiny">May Allah make your dreams come true. InshaAllah. 🤍</span>
+  </footer>
+</div>
+<div id="toast" role="status"></div>
+
+<script>
+/*
+  IMPORTANT:
+  The repository is public, so do not put a real password here.
+  This demo gate is not security; visitors can inspect this JavaScript.
+  Set a non-sensitive birthday code if you still want the entry screen.
+*/
+const ACCESS_EMAIL = "itsforyousahiduuuu@gmail.com";
+const ACCESS_PASSWORD = "CHANGE-THIS-TO-A-NON-SENSITIVE-BIRTHDAY-CODE";
+const WHATSAPP_NUMBER = "918217335405";
+
+const photos = [
+  {
+    file:"WhatsApp Image 2026-10-24 at 10.56.22 AM.jpeg",
+    title:"My Favourite Kind of Together",
+    caption:"Some moments feel peaceful without needing anything special. Being beside you is one of those little blessings I always want to remember."
+  },
+  {
+    file:"WhatsApp Image 2026-10-24 at 10.56.29 AM.jpeg",
+    title:"That Beautiful Smile",
+    caption:"Your smile has a way of making an ordinary moment feel beautiful. I pray Allah always gives you reasons to smile from your heart."
+  },
+  {
+    file:"WhatsApp Image 2026-10-24 at 10.56.29 AM (1).jpeg",
+    title:"A Memory I Treasure",
+    caption:"Every picture keeps a little piece of a day we lived. This one reminds me how precious our memories are and how grateful I am for them."
+  },
+  {
+    file:"WhatsApp Image 2026-10-24 at 10.56.30 AM.jpeg",
+    title:"Side by Side",
+    caption:"Different days will bring different challenges, but I hope we always remember to encourage one another, make dua and celebrate each other's growth."
+  },
+  {
+    file:"WhatsApp Image 2026-10-24 at 10.56.30 AM (1).jpeg",
+    title:"My Sweetest Person",
+    caption:"You are more than a picture or a moment. You are someone whose happiness matters to me, and I pray your future is full of peace and beautiful opportunities."
+  },
+  {
+    file:"WhatsApp Image 2026-10-24 at 10.56.30 AM (2).jpeg",
+    title:"A Little Moment of Happiness",
+    caption:"Sometimes the smallest moments become the ones we remember most. I hope we keep collecting simple, genuine moments that make us happy."
+  },
+  {
+    file:"WhatsApp Image 2026-10-24 at 10.56.31 AM.jpeg",
+    title:"Our Story, Our Memories",
+    caption:"Our story is made from little moments, shared smiles and things only we understand. I hope we keep growing wiser and kinder with every chapter."
+  },
+  {
+    file:"WhatsApp Image 2026-10-24 at 10.56.45 AM.jpeg",
+    title:"A Dua for Your Future",
+    caption:"May Allah open the right doors for you, protect you from what harms you and make the dreams that are good for you easier to achieve."
+  },
+  {
+    file:"WhatsApp Image 2026-10-24 at 10.56.46 AM.jpeg",
+    title:"Keep That Light in Your Heart",
+    caption:"Never stop believing in the good you can do. I hope this new year brings you courage, learning, good health and many moments of genuine happiness."
+  },
+  {
+    file:"WhatsApp Image 2026-10-24 at 10.56.48 AM.jpeg",
+    title:"One More Memory, One More Prayer",
+    caption:"As you begin another year of life, I pray for your peace, your dreams and your smile. Happy birthday, my princess—may Allah bless every step ahead."
+  }
+];
+
+const photoGrid = document.getElementById("photoGrid");
+photos.forEach((photo,index)=>{
+  const card=document.createElement("article");
+  card.className="card";
+  const img=document.createElement("img");
+  img.className="photo";
+  img.loading=index<2?"eager":"lazy";
+  img.alt="A personal memory";
+  img.src=photo.file;
+  img.onerror=()=>{img.alt="Photo not found: "+photo.file;img.style.minHeight="180px";};
+  const copy=document.createElement("div");
+  copy.className="card-copy";
+  const number=document.createElement("div");
+  number.className="number";
+  number.textContent="Memory "+String(index+1).padStart(2,"0");
+  const title=document.createElement("h3");
+  title.textContent=photo.title;
+  const caption=document.createElement("p");
+  caption.textContent=photo.caption;
+  copy.append(number,title,caption);
+  card.append(img,copy);
+  photoGrid.append(card);
+});
+
+document.getElementById("loginForm").addEventListener("submit",function(event){
+  event.preventDefault();
+  const email=document.getElementById("email").value.trim().toLowerCase();
+  const password=document.getElementById("password").value;
+  const error=document.getElementById("loginError");
+  if(ACCESS_PASSWORD.startsWith("CHANGE-THIS")){
+    error.textContent="Before using this entry screen, set a non-sensitive birthday code in the code. Remember, this is not secure authentication.";
+    return;
+  }
+  if(email===ACCESS_EMAIL.toLowerCase() && password===ACCESS_PASSWORD){
+    document.getElementById("loginScreen").classList.add("hidden");
+    document.getElementById("website").classList.remove("hidden");
+    window.scrollTo({top:0,behavior:"smooth"});
+    toast("Welcome to your little world, Shaiduuuuuu ♡");
+  }else{
+    error.textContent="That doesn't match, my princess. Please try again. ♡";
+  }
+});
+
+document.getElementById("replyForm").addEventListener("submit",function(event){
+  event.preventDefault();
+  const name=document.getElementById("replyName").value.trim()||"Shaheeda";
+  const message=document.getElementById("replyMessage").value.trim();
+  if(!message){toast("Write a little message first ♡");return;}
+  const text="Assalamu alaikum Fahiz ❤️\n\nIt's "+name+". Here is my reply to your birthday surprise:\n\n"+message+"\n\n— Sent from your birthday website";
+  const url="https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(text);
+  window.open(url,"_blank","noopener,noreferrer");
+});
+
+function toast(message){
+  const el=document.getElementById("toast");
+  el.textContent=message;
+  el.style.display="block";
+  clearTimeout(window.toastTimer);
+  window.toastTimer=setTimeout(()=>el.style.display="none",3500);
+}
+
+const particles=document.getElementById("particles");
+for(let i=0;i<24;i++){
+  const p=document.createElement("span");
+  p.className="particle";
+  p.textContent=["♥","♡","✦","✧"][i%4];
+  p.style.left=Math.random()*100+"%";
+  p.style.fontSize=(12+Math.random()*20)+"px";
+  p.style.animationDuration=(10+Math.random()*18)+"s";
+  p.style.animationDelay=(-Math.random()*25)+"s";
+  p.style.setProperty("--drift",(Math.random()*120-60)+"px");
+  particles.appendChild(p);
+}
+</script>
+</body>
+</html>
