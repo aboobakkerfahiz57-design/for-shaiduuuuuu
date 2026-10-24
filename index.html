@@ -3,326 +3,656 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#240817">
 <title>For My Shaiduuuuuu ❤️</title>
+<meta name="description" content="A birthday surprise filled with love, memories and duas for Shaheeda.">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
-:root{--pink:#ff8cb8;--gold:#f8d9a0}
+:root {
+  --pink:#ff8cb8;
+  --gold:#f8d9a0;
+  --wine:#260719;
+  --glass:rgba(255,239,247,.09);
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:#190612;color:#fff2f7;font-family:Georgia,serif;line-height:1.7}
+body{
+  margin:0;background:#190612;color:#fff2f7;
+  font-family:Georgia,"Times New Roman",serif;
+  overflow-x:hidden
+}
 button,input,textarea{font:inherit}
 button{cursor:pointer}
-.bg{position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse at top,#641b46,#190612 70%)}
-.wrap{width:min(1050px,92%);margin:auto}
-.topbar{padding:17px 4%;display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #ffbfd522;background:#260719aa}
-.brand,.gold{color:var(--gold)}
-.btn{display:inline-block;border:0;border-radius:30px;padding:13px 22px;background:linear-gradient(135deg,#ff8bb8,#b63c76);color:white;font-weight:bold}
-button:disabled{opacity:.6}
-section{padding:55px 0}
-.hero{min-height:78vh;display:grid;place-items:center;text-align:center}
-.hero-card,.card,.letter,.login-card,.video-card,.reply{padding:clamp(20px,4vw,38px);border:1px solid #ffbfd533;border-radius:24px;background:#ffffff0d;box-shadow:0 18px 60px #0004;backdrop-filter:blur(10px)}
-.hero-card{width:100%;max-width:800px}
-.eyebrow{letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-size:.8rem}
-h1{font-size:clamp(2.7rem,8vw,5rem);line-height:1.1}
-h1 span{display:block;color:var(--pink);font-style:italic}
-h2{text-align:center;font-size:clamp(2rem,5vw,3rem);line-height:1.2}
-h3{color:var(--gold)}
-p{color:#f5dce7}
-.heart{font-size:58px;color:var(--pink);animation:pulse 2s infinite}
-@keyframes pulse{50%{transform:scale(1.1)}}
-.sub{text-align:center;max-width:650px;margin:0 auto 30px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:20px}
-.card{padding:12px;overflow:hidden}
-.card img{width:100%;height:320px;object-fit:cover;border-radius:15px;background:#200b18}
-.card p{padding:0 8px}
-.video-card{padding:13px}
-video{width:100%;max-height:560px;background:#090209;border-radius:13px}
-.letter{max-width:800px;margin:auto;line-height:2}
-.salute{text-align:center;color:var(--gold);font-size:1.5rem}
-.signature{text-align:right;color:var(--pink);font-style:italic}
-.reply{max-width:700px;margin:auto}
-label{display:block;margin:14px 0 5px;color:var(--gold)}
-input,textarea{width:100%;padding:13px;border-radius:12px;border:1px solid #ffbfd544;background:#ffffff0c;color:white}
-textarea{min-height:130px}
-.hint,.tiny{font-size:.85rem;color:#dcb9cb}
-footer{text-align:center;padding:40px 15px;color:#e5bdcf}
-.login-screen{position:fixed;inset:0;z-index:5;display:grid;place-items:center;padding:18px;background:#190612ed;overflow:auto}
-.login-card{width:min(440px,100%);text-align:center}
-.login-card h2{color:var(--pink);margin:10px 0}
-.login-card .btn{width:100%;margin-top:20px}
-.error{color:#ff9ab5;min-height:25px}
 .hidden{display:none!important}
-#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9;background:#310d25;border:1px solid #ffc0d8;border-radius:25px;padding:12px 18px;display:none;max-width:90%}
-@media(max-width:600px){section{padding:38px 0}.card img{height:auto;max-height:470px;object-fit:contain}}
+.wrap{width:min(1100px,92%);margin:auto}
+#background{
+  position:fixed;inset:0;z-index:-3;
+  background:
+    radial-gradient(ellipse at 50% 35%,#773052 0%,#351027 45%,#190612 100%);
+  background-size:cover;background-position:center;
+}
+#background::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,#19061222,#190612aa);
+}
+#particles{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.particle{
+  position:absolute;bottom:-50px;opacity:0;color:#ffb0cf;
+  text-shadow:0 0 16px #ff6fae;animation:rise linear infinite
+}
+@keyframes rise{
+  to{transform:translate3d(var(--drift),-115vh,0) rotate(360deg);opacity:0}
+}
+@keyframes pulse{
+  50%{transform:scale(1.09);filter:drop-shadow(0 0 26px #ff6da7)}
+}
+@keyframes appear{
+  from{opacity:0;transform:translateY(22px) scale(.98)}
+  to{opacity:1;transform:none}
+}
+@keyframes shimmer{
+  50%{box-shadow:0 0 35px #ff78ae44}
+}
+@keyframes float{50%{transform:translateY(-10px) rotateY(5deg)}}
+.topbar{
+  position:relative;z-index:2;display:flex;justify-content:space-between;
+  align-items:center;padding:18px 5%;border-bottom:1px solid #ffbfd522;
+  background:#21071766;backdrop-filter:blur(15px)
+}
+.brand{letter-spacing:2px;color:var(--gold);font-size:.9rem}
+.sound{
+  background:#ffffff12;border:1px solid #ffffff30;
+  color:white;padding:10px 14px;border-radius:30px
+}
+section{padding:64px 0}
+.hero{
+  min-height:85vh;display:grid;place-items:center;text-align:center;
+  padding:60px 0 80px
+}
+.hero-card{
+  width:min(820px,100%);padding:clamp(24px,5vw,58px);
+  border:1px solid #ffbfd544;border-radius:28px;
+  background:linear-gradient(145deg,#ffffff1b,#300b2077);
+  backdrop-filter:blur(13px);box-shadow:0 28px 100px #10020d70;
+  animation:appear 1.2s ease both
+}
+.eyebrow{
+  text-transform:uppercase;letter-spacing:4px;
+  color:var(--gold);font-size:.76rem
+}
+h1{
+  font-size:clamp(2.5rem,8vw,5.6rem);line-height:1.04;
+  margin:20px 0;color:#fff1f7;text-shadow:0 4px 35px #ff4e9870
+}
+h1 span{display:block;color:var(--pink);font-style:italic}
+.lead{
+  max-width:600px;margin:20px auto;line-height:1.9;
+  color:#f8dce8;font-size:1.08rem
+}
+.heart3d{
+  display:inline-block;font-size:65px;
+  filter:drop-shadow(0 12px 20px #ff4f9970);
+  animation:pulse 2.6s ease-in-out infinite
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:14px 23px;border:1px solid #ffb5d1;border-radius:40px;
+  background:linear-gradient(135deg,#ff8bb8,#b63c76);
+  color:white;font-weight:bold;box-shadow:0 10px 30px #ff4f9933;
+  transition:.25s
+}
+.btn:hover{transform:translateY(-3px) scale(1.02)}
+.btn.secondary{background:#ffffff12;border-color:#ffffff30}
+h2{
+  text-align:center;font-size:clamp(2rem,5vw,3.3rem);
+  margin:0 0 13px
+}
+.section-sub{
+  text-align:center;max-width:640px;line-height:1.8;
+  color:#e8c9d7;margin:0 auto 35px
+}
+.gold{color:var(--gold)}
+.grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px
+}
+.card{
+  background:linear-gradient(145deg,#ffffff18,#ffffff08);
+  border:1px solid #ffd5e344;border-radius:22px;overflow:hidden;
+  box-shadow:0 18px 55px #09010855;backdrop-filter:blur(9px);
+  animation:shimmer 6s ease-in-out infinite;transition:transform .35s
+}
+.card:hover{transform:translateY(-5px) perspective(800px) rotateX(1deg)}
+.photo{
+  width:100%;height:350px;object-fit:cover;display:block;background:#38152b
+}
+.card-copy{padding:20px 21px 23px}
+.card-copy h3{font-size:1.35rem;color:var(--gold);margin:0 0 10px}
+.card-copy p{line-height:1.8;color:#f5dce7;margin:0}
+.number{
+  color:#ff91ba;letter-spacing:2px;font-size:.75rem;
+  text-transform:uppercase;margin-bottom:9px
+}
+.video-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px
+}
+.video-card{
+  padding:15px;border:1px solid #ffd5e344;border-radius:22px;
+  background:#ffffff0c;backdrop-filter:blur(10px)
+}
+.video-card video{
+  width:100%;max-height:560px;background:#0c0309;
+  border-radius:14px;display:block
+}
+.video-card h3{color:var(--gold);margin:16px 4px 8px}
+.video-card p{line-height:1.7;color:#efcfde;margin:0 4px 12px}
+.letter{
+  max-width:800px;margin:auto;padding:clamp(23px,5vw,48px);
+  border:1px solid #f5d29c88;border-radius:25px;
+  background:linear-gradient(140deg,#fff0f51a,#5b143066);
+  box-shadow:0 25px 75px #0004;line-height:2;font-size:1.06rem
+}
+.salute{text-align:center;color:var(--gold);font-size:1.7rem}
+.signature{text-align:right;color:var(--pink);font-style:italic;font-size:1.4rem}
+.reply{
+  max-width:700px;margin:auto;padding:clamp(20px,4vw,36px);
+  border:1px solid #ffc2d855;border-radius:24px;
+  background:#210818cc;backdrop-filter:blur(12px)
+}
+label{display:block;margin:15px 0 8px;color:var(--gold)}
+input,textarea{
+  width:100%;border:1px solid #ffbfd566;border-radius:12px;
+  background:#ffffff12;color:white;padding:13px;outline:none
+}
+input:focus,textarea:focus{border-color:var(--pink)}
+textarea{min-height:135px;resize:vertical;line-height:1.6}
+.hint{color:#dcb9cb;font-size:.85rem;line-height:1.6}
+footer{text-align:center;padding:35px 15px 50px;color:#e5bdcf;line-height:1.9}
+footer strong{color:var(--gold)}
+.login-screen{
+  position:fixed;inset:0;z-index:10;display:grid;place-items:center;
+  padding:20px;background:linear-gradient(#1b0515aa,#1b0515e8)
+}
+.login-card{
+  width:min(450px,100%);padding:clamp(25px,6vw,43px);
+  text-align:center;border:1px solid #ffcee677;border-radius:27px;
+  background:#23091bea;backdrop-filter:blur(18px);
+  box-shadow:0 25px 90px #0009;animation:appear .9s ease both
+}
+.login-card .heart3d{font-size:55px}
+.login-card h2{color:var(--pink);margin:13px 0}
+.login-card p{line-height:1.7;color:#f3d7e5}
+.login-card label{text-align:left}
+.login-card .btn{width:100%;margin-top:20px}
+.error{color:#ff9ab5;min-height:24px;margin-top:12px;line-height:1.5}
+.tiny{font-size:.8rem;color:#cfa9bc}
+#toast{
+  position:fixed;left:50%;bottom:22px;transform:translateX(-50%);
+  padding:13px 18px;border:1px solid #ffc0d8;border-radius:30px;
+  background:#310d25;color:white;z-index:20;display:none;
+  max-width:90%;text-align:center
+}
+@media(max-width:800px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .photo{height:320px}
+}
+@media(max-width:600px){
+  section{padding:47px 0}
+  .grid,.video-grid{grid-template-columns:1fr}
+  .photo{height:auto;max-height:520px;object-fit:contain;background:#14060f}
+  .hero{min-height:82vh;padding:42px 0 55px}
+  .hero-card{border-radius:23px}
+  .topbar{padding:14px 4%}
+  .brand{font-size:.74rem;letter-spacing:1px}
+  .lead{font-size:1rem}
+  .card-copy{padding:18px}
+  .video-card{padding:11px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;transition:none!important
+  }
+}
 </style>
 </head>
+
 <body>
-<div class="bg"></div>
+<div id="background"></div>
+<div id="particles" aria-hidden="true"></div>
 
 <div class="login-screen" id="loginScreen">
-<form class="login-card" id="loginForm">
-<div class="heart">♡</div>
-<div class="eyebrow">A little surprise made with love</div>
-<h2>For Shaiduuuuuu</h2>
-<p>My princess, a little world of memories, love and duas is waiting for you. ❤️</p>
-<label for="email">Your email</label>
-<input id="email" type="email" autocomplete="username" placeholder="Enter your email" required>
-<label for="password">Your password</label>
-<input id="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
-<button class="btn" id="loginButton" type="submit">Open My Surprise ♡</button>
-<div class="error" id="loginError" role="status"></div>
-<div class="tiny">Made especially for you, with love and duas.</div>
-</form>
+  <form class="login-card" id="loginForm">
+    <div class="heart3d">♡</div>
+    <div class="eyebrow">A little surprise made with love</div>
+    <h2>For Shaiduuuuuu</h2>
+    <p>Someone has prepared a little world just for you, my princess. Ready to open it? ✨</p>
+    <label for="email">Your email</label>
+    <input id="email" type="email" autocomplete="username" placeholder="Enter your email" required>
+    <label for="password">Your password</label>
+    <input id="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+    <button class="btn" id="loginButton" type="submit">Open My Surprise ♡</button>
+    <div class="error" id="loginError" role="status"></div>
+    <div class="tiny">Made especially for you, with love and duas.</div>
+  </form>
 </div>
 
 <div id="website" class="hidden">
-<header class="topbar">
-<div class="brand">♡ A LITTLE WORLD FOR SHAIDUUUUUU</div>
-<button class="btn" id="logoutButton" type="button">Lock Surprise</button>
-</header>
-<main>
-<section class="hero wrap">
-<div class="hero-card">
-<div class="eyebrow">25 October · Your special day</div>
-<div class="heart">♥️</div>
-<h1>Happy Birthday,<span>My Princess</span></h1>
-<p>Assalamu alaikum, my sweetest Shaiduuuuuu. Every memory, every word and every dua here is for you. May Allah bless your new year of life with happiness, peace and barakah. ❤️</p>
-<button class="btn" onclick="document.getElementById('memories').scrollIntoView({behavior:'smooth'})">Enter Our Memories ↓</button>
+  <header class="topbar">
+    <div class="brand">♡ A LITTLE WORLD FOR SHAIDUUUUUU</div>
+    <button class="sound" id="memoriesButton" type="button">♡ Our memories</button>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="hero-card">
+        <div class="eyebrow">25 October · Your special day</div>
+        <div class="heart3d">♥️</div>
+        <h1>Happy Birthday,<span>My Princess</span></h1>
+        <p class="lead">Assalamu alaikum, my sweetest Shaiduuuuuu. This little world is a small gift from my heart to yours. Every memory, every word and every dua here is for you. ❤️</p>
+        <button class="btn" id="enterMemories" type="button">Enter Our Memories ↓</button>
+      </div>
+    </section>
+
+    <section id="memories">
+      <div class="wrap">
+        <h2>Our Little <span class="gold">Memories</span></h2>
+        <p class="section-sub">Ten pictures, ten little reminders of how special you are to me. Every picture carries a memory and a message for you.</p>
+        <div class="grid" id="photoGrid"></div>
+        <p class="section-sub" id="photoStatus" aria-live="polite">Your memories will appear here after sign-in.</p>
+      </div>
+    </section>
+
+    <section id="videos">
+      <div class="wrap">
+        <h2>Made <span class="gold">Just for You</span></h2>
+        <p class="section-sub">Take your time, my love. These videos carry moments and wishes I wanted you to have.</p>
+        <div class="video-grid" id="videoGrid"></div>
+        <p class="section-sub" id="videoStatus" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section id="letter">
+      <div class="wrap">
+        <h2>A Letter <span class="gold">From My Heart</span></h2>
+        <p class="section-sub">Read this slowly, princess. Every word comes with a dua for you.</p>
+        <div class="letter">
+          <div class="salute">Assalamu alaikum, my Shaiduuuuuu ♡</div>
+          <p>Happy, happy, happy returns of the day to my lovely princess. I may not always find the perfect words to explain how much you mean to me, but I hope this little gift makes you feel how special you are in my life.</p>
+          <p>May Allah make your dreams come true, make every difficult path easy for you, protect your health, calm your worries and fill your heart with peace and happiness. When life feels difficult, remember that you are capable of so much more than you realise. Keep believing in yourself and keep moving towards the dreams you carry in your heart.</p>
+          <p>I pray that Allah guides you, protects you and gives you the strength to achieve everything good you hope for. Please keep praying for me too, just as I pray for you. InshaAllah, may the future bring beautiful days, growth, happiness and many reasons to smile.</p>
+          <p>This website is only a small gift. The biggest thing I want you to know is that I love you so much. Take care of yourself, my princess, and never forget how precious your happiness is.</p>
+          <p>Once again, happy birthday, my sweetest Shaiduuuuuu. May Allah bless your new year of life with barakah, good health, peace and beautiful opportunities. Aameen. 🤍</p>
+          <div class="signature">Always with duas for you,<br>Fahiz ♡</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reply">
+      <div class="wrap">
+        <h2>Your Turn, <span class="gold">My Princess</span></h2>
+        <p class="section-sub">If this little surprise made you smile, I would love to hear what is in your heart. Write me a reply below. ♡</p>
+        <form class="reply" id="replyForm">
+          <label for="replyName">Your name or nickname</label>
+          <input id="replyName" type="text" maxlength="80" placeholder="My Shaiduuuuuu">
+          <label for="replyMessage">Your message for me</label>
+          <textarea id="replyMessage" maxlength="3000" required placeholder="Babyyyyyy, this is what I want to tell you..."></textarea>
+          <p class="hint">WhatsApp will open with your message prepared. Press Send in WhatsApp to deliver it to Fahiz.</p>
+          <button class="btn" type="submit">Send My Reply on WhatsApp 💌</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div style="font-size:2rem;color:#ff8cb8">♥️</div>
+    <strong>Happy Birthday, Shaiduuuuuu</strong><br>
+    Made with love, memories and duas by Fahiz.<br>
+    <span class="tiny">May Allah make your dreams come true. InshaAllah. 🤍</span>
+    <p><button id="logoutButton" class="sound" type="button">Sign out</button></p>
+  </footer>
 </div>
-</section>
 
-<section id="memories" class="wrap">
-<h2>Our Little <span class="gold">Memories</span></h2>
-<p class="sub">Our moments together, saved with love. ♡</p>
-<div class="grid" id="photoGrid"><p>Loading our memories…</p></div>
-</section>
-
-<section id="videos" class="wrap">
-<h2>Made <span class="gold">Just for You</span></h2>
-<p class="sub">My own words, my own voice and little memories for my princess.</p>
-<div class="grid" id="videoGrid"><p>Loading our videos…</p></div>
-</section>
-
-<section class="wrap">
-<h2>A Letter <span class="gold">From My Heart</span></h2>
-<div class="letter">
-<div class="salute">Assalamu alaikum, my Shaiduuuuuu ♡</div>
-<p>Happy birthday to my lovely princess. I may not always find the perfect words to explain how much you mean to me, but I hope this little gift makes you feel how special you are in my life.</p>
-<p>May Allah make your dreams come true, make every difficult path easy for you, protect your health, calm your worries and fill your heart with peace. May He guide you towards what is good for you and give you strength whenever life feels difficult.</p>
-<p>I pray that this new year of your life brings barakah, good health, success, happiness and beautiful opportunities. Keep believing in yourself, keep smiling and never forget how precious your happiness is.</p>
-<p>Thank you for being a beautiful part of my life. This website is only a small gift, but every word here comes from my heart. Happy birthday, my sweetest Shaiduuuuuu. Aameen. 🤍</p>
-<div class="signature">Always with duas for you,<br>Fahiz ♡</div>
-</div>
-</section>
-
-<section class="wrap">
-<h2>Your Turn, <span class="gold">My Princess</span></h2>
-<p class="sub">Tell me what is in your heart. Your message will open in WhatsApp for you to send. 💌</p>
-<form class="reply" id="replyForm">
-<label for="replyName">Your name or nickname</label>
-<input id="replyName" maxlength="80" placeholder="My Shaiduuuuuu">
-<label for="replyMessage">Your message for me</label>
-<textarea id="replyMessage" maxlength="3000" required placeholder="Babyyyyyy, this is what I want to tell you..."></textarea>
-<p class="hint">WhatsApp opens with your message prepared. Press Send there to deliver it.</p>
-<button class="btn" type="submit">Send My Reply on WhatsApp 💌</button>
-</form>
-</section>
-</main>
-<footer>♥️<br><strong class="gold">Happy Birthday, Shaiduuuuuu</strong><br>Made with love, memories and duas by Fahiz.<br>May Allah make your dreams come true. InshaAllah. 🤍</footer>
-</div>
 <div id="toast" role="status"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-/* Paste the Project URL and Publishable key from your own Supabase project. */
+/* ==========================================================
+   STEP 1: Paste your existing Supabase Project URL and
+   publishable (anon) key into the two values below.
+   Do NOT use a service_role or secret key here.
+   ========================================================== */
 const SUPABASE_URL = "https://dfxmagtcogarbufocnau.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_1C59R-vbgvaGnr7m5bDncw_QmhA4QHI";
 
-/* These names must match your existing Supabase Storage bucket and filenames. */
+/* Must exactly match your existing Storage bucket name. */
 const STORAGE_BUCKET = "shaidu-memories";
+
+/* Fahiz's WhatsApp number, including country code, digits only. */
 const WHATSAPP_NUMBER = "918217335405";
 
-/*
-Storage files should be private. This code downloads them only for a signed-in
-user. The Storage SELECT policy must permit authenticated users to read this
-bucket. No service-role key belongs in this public HTML file.
-*/
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
+/* The uploaded background filename shown in your Storage screenshots.
+   If your background has a different filename, it will try another image. */
+const BACKGROUND_FILENAME = "WhatsApp Image 2026-10-24 at 10.57.36 AM.jpeg";
+
+const captions = [
+  ["My Favourite Kind of Together","Some moments feel peaceful without needing anything special. Being beside you is one of those little blessings I always want to remember."],
+  ["That Beautiful Smile","Your smile has a way of making an ordinary moment feel beautiful. I pray Allah always gives you reasons to smile from your heart."],
+  ["A Memory I Treasure","Every picture keeps a little piece of a day we lived. This one reminds me how precious our memories are."],
+  ["Side by Side","I hope we always remember to encourage one another, make dua and celebrate each other's growth."],
+  ["My Sweetest Person","Your happiness matters to me, and I pray your future is full of peace and beautiful opportunities."],
+  ["A Little Moment of Happiness","Sometimes the smallest moments become the ones we remember most. I hope we keep collecting simple, genuine moments."],
+  ["Our Story, Our Memories","Our story is made from little moments, shared smiles and things only we understand."],
+  ["A Dua for Your Future","May Allah open the right doors for you, protect you from what harms you and make good dreams easier to achieve."],
+  ["Keep That Light in Your Heart","I hope this new year brings you courage, learning, good health and many moments of genuine happiness."],
+  ["One More Memory, One More Prayer","I pray for your peace, your dreams and your smile. Happy birthday, my princess."]
+];
+
+const videoCaptions = {
+  "wishes.mp4":["My Birthday Wishes to You ♡","My own words, my own voice, and a prayer for your happiness."],
+  "edit1.mp4":["A Memory Made with Love","One little edit for the moments that mean so much to me."],
+  "edit2.mp4":["Another Little Piece of Us","Some memories become special simply because they are ours."]
+};
+
+const $ = id => document.getElementById(id);
+let supabaseClient = null;
+let signedIn = false;
+let signingIn = false;
+
+function toast(message) {
+  const el = $("toast");
+  el.textContent = message;
+  el.style.display = "block";
+  clearTimeout(window.toastTimer);
+  window.toastTimer = setTimeout(() => el.style.display = "none", 4000);
+}
+
+function setLoginError(message) {
+  $("loginError").textContent = message || "";
+}
+
+function isConfigured() {
+  return SUPABASE_URL.startsWith("https://") &&
+    !SUPABASE_URL.includes("PASTE_") &&
+    SUPABASE_PUBLISHABLE_KEY.length > 20 &&
+    !SUPABASE_PUBLISHABLE_KEY.includes("PASTE_");
+}
+
+function isImage(file) {
+  return /\.(jpe?g|png|webp|gif|avif)$/i.test(file.name);
+}
+function isVideo(file) {
+  return /\.(mp4|webm|mov|m4v)$/i.test(file.name);
+}
+function isBackgroundFile(file) {
+  return file.name === BACKGROUND_FILENAME ||
+    /homepage-bg/i.test(file.name) ||
+    /10\.57\.36 AM/i.test(file.name);
+}
+
+async function getSignedUrl(path) {
+  const { data, error } = await supabaseClient.storage
+    .from(STORAGE_BUCKET)
+    .createSignedUrl(path, 60 * 60 * 24 * 7);
+  if (error) throw error;
+  return data.signedUrl;
+}
+
+/* Fetch the files after successful login. The bucket remains private. */
+async function loadMemories() {
+  $("photoGrid").replaceChildren();
+  $("videoGrid").replaceChildren();
+  $("photoStatus").textContent = "Loading your memories…";
+  $("videoStatus").textContent = "Loading your videos…";
+
+  try {
+    const { data: files, error } = await supabaseClient.storage
+      .from(STORAGE_BUCKET)
+      .list("", { limit: 100, sortBy: { column: "name", order: "asc" } });
+
+    if (error) throw error;
+    const validFiles = (files || []).filter(f =>
+      f.name && f.name !== ".emptyFolderPlaceholder" && !f.id?.startsWith("folder")
+    );
+
+    const imageFiles = validFiles.filter(isImage);
+    const videoFiles = validFiles.filter(isVideo);
+
+    /* Prefer the known romantic background, otherwise use a likely background
+       filename, and finally use the first uploaded image. */
+    let bgFile = imageFiles.find(f => f.name === BACKGROUND_FILENAME)
+      || imageFiles.find(isBackgroundFile)
+      || imageFiles.find(f => /background|homepage|bg/i.test(f.name))
+      || imageFiles[0];
+
+    if (bgFile) {
+      try {
+        const url = await getSignedUrl(bgFile.name);
+        $("background").style.backgroundImage =
+          `linear-gradient(180deg,rgba(26,4,19,.24),rgba(25,3,16,.76)),url("${url}")`;
+        $("background").style.backgroundSize = "cover";
+        $("background").style.backgroundPosition = "center";
+        $("background").style.backgroundRepeat = "no-repeat";
+      } catch (e) {
+        console.warn("Background could not load:", e.message);
+      }
+    }
+
+    /* Do not display the selected background as a memory card. */
+    const memories = imageFiles.filter(f => !bgFile || f.name !== bgFile.name).slice(0, 10);
+
+    if (!memories.length) {
+      $("photoStatus").textContent =
+        "No photos were found in the bucket. Check the filenames and bucket access policy.";
+    } else {
+      $("photoStatus").textContent = "";
+      for (let i = 0; i < memories.length; i++) {
+        const file = memories[i];
+        const card = document.createElement("article");
+        card.className = "card";
+
+        const img = document.createElement("img");
+        img.className = "photo";
+        img.alt = "A personal memory";
+        img.loading = i < 2 ? "eager" : "lazy";
+
+        const copy = document.createElement("div");
+        copy.className = "card-copy";
+        const number = document.createElement("div");
+        number.className = "number";
+        number.textContent = "Memory " + String(i + 1).padStart(2, "0");
+
+        const title = document.createElement("h3");
+        const caption = document.createElement("p");
+        const words = captions[i] || ["A Memory to Treasure","A little memory kept with love and a prayer for your happiness."];
+        title.textContent = words[0];
+        caption.textContent = words[1];
+        copy.append(number, title, caption);
+        card.append(img, copy);
+        $("photoGrid").append(card);
+
+        try {
+          img.src = await getSignedUrl(file.name);
+        } catch (e) {
+          img.alt = "Could not load " + file.name;
+          img.style.minHeight = "180px";
+        }
+      }
+    }
+
+    /* Use explicitly named videos when available; otherwise use uploaded videos. */
+    const orderedVideos = [];
+    for (const preferred of ["wishes.mp4", "edit1.mp4", "edit2.mp4"]) {
+      const found = videoFiles.find(f => f.name.toLowerCase() === preferred);
+      if (found) orderedVideos.push(found);
+    }
+    for (const file of videoFiles) {
+      if (!orderedVideos.some(f => f.name === file.name)) orderedVideos.push(file);
+    }
+
+    const videos = orderedVideos.slice(0, 3);
+    if (!videos.length) {
+      $("videoStatus").textContent = "No video files were found in the Storage bucket.";
+    } else {
+      $("videoStatus").textContent = "";
+      for (let i = 0; i < videos.length; i++) {
+        const file = videos[i];
+        const card = document.createElement("article");
+        card.className = "video-card";
+        const video = document.createElement("video");
+        video.controls = true;
+        video.playsInline = true;
+        video.preload = "metadata";
+
+        const source = document.createElement("source");
+        source.type = /\.webm$/i.test(file.name) ? "video/webm" : "video/mp4";
+        video.append(source);
+
+        const heading = document.createElement("h3");
+        const paragraph = document.createElement("p");
+        const lower = file.name.toLowerCase();
+        let words;
+        if (lower.includes("wishes")) words = videoCaptions["wishes.mp4"];
+        else if (lower.includes("edit1")) words = videoCaptions["edit1.mp4"];
+        else if (lower.includes("edit2")) words = videoCaptions["edit2.mp4"];
+        else words = [
+          i === 0 ? "My Birthday Wishes to You ♡" : "A Memory Made with Love",
+          "A little video kept especially for you."
+        ];
+        heading.textContent = words[0];
+        paragraph.textContent = words[1];
+        card.append(video, heading, paragraph);
+        $("videoGrid").append(card);
+
+        try {
+          source.src = await getSignedUrl(file.name);
+          video.load();
+        } catch (e) {
+          paragraph.textContent = "Could not load this video. Check Storage permissions.";
+        }
+      }
+    }
+  } catch (error) {
+    console.error(error);
+    $("photoStatus").textContent =
+      "Storage could not be read. Check the bucket name and the authenticated SELECT policy. Details: " +
+      (error.message || "Unknown error");
+    $("videoStatus").textContent = "Videos could not be loaded.";
+  }
+}
+
+$("loginForm").addEventListener("submit", async event => {
+  event.preventDefault();
+  if (signingIn) return;
+
+  if (!isConfigured()) {
+    setLoginError("First replace SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY in the script with your real project values.");
+    return;
+  }
+  if (!window.supabase) {
+    setLoginError("The Supabase library did not load. Check your internet connection and refresh.");
+    return;
+  }
+
+  signingIn = true;
+  $("loginButton").disabled = true;
+  $("loginButton").textContent = "Checking your login…";
+  setLoginError("");
+
+  try {
+    if (!supabaseClient) {
+      supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY,
+        {
+          auth: {
+            persistSession: false,
+            autoRefreshToken: false,
+            detectSessionInUrl: false
+          }
+        }
+      );
+    }
+
+    const email = $("email").value.trim();
+    const password = $("password").value;
+
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if (error) throw error;
+    if (!data.session) throw new Error("Login succeeded but no session was returned.");
+
+    signedIn = true;
+    $("loginScreen").classList.add("hidden");
+    $("website").classList.remove("hidden");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    toast("Welcome to your little world, Shaiduuuuuu ♡");
+
+    await loadMemories();
+  } catch (error) {
+    console.error(error);
+    setLoginError(
+      error.message === "Invalid login credentials"
+        ? "Email or password is incorrect. Please try again. ♡"
+        : (error.message || "Could not sign in. Please try again.")
+    );
+  } finally {
+    signingIn = false;
+    $("loginButton").disabled = false;
+    $("loginButton").textContent = "Open My Surprise ♡";
+  }
+});
+
+$("logoutButton").addEventListener("click", async () => {
+  if (supabaseClient) await supabaseClient.auth.signOut();
+  signedIn = false;
+  $("website").classList.add("hidden");
+  $("loginScreen").classList.remove("hidden");
+  $("password").value = "";
+  setLoginError("");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+$("enterMemories").addEventListener("click", () =>
+  $("memories").scrollIntoView({ behavior: "smooth" })
+);
+$("memoriesButton").addEventListener("click", () =>
+  $("memories").scrollIntoView({ behavior: "smooth" })
 );
 
-const photoFiles = [
-  "WhatsApp Image 2026-10-24 at 10.56.22 AM.jpeg",
-  "WhatsApp Image 2026-10-24 at 10.56.29 AM.jpeg",
-  "WhatsApp Image 2026-10-24 at 10.56.29 AM (1).jpeg",
-  "WhatsApp Image 2026-10-24 at 10.56.30 AM.jpeg",
-  "WhatsApp Image 2026-10-24 at 10.56.30 AM (1).jpeg",
-  "WhatsApp Image 2026-10-24 at 10.56.30 AM (2).jpeg",
-  "WhatsApp Image 2026-10-24 at 10.56.31 AM.jpeg",
-  "WhatsApp Image 2026-10-24 at 10.56.45 AM.jpeg",
-  "WhatsApp Image 2026-10-24 at 10.56.46 AM.jpeg",
-  "WhatsApp Image 2026-10-24 at 10.56.48 AM.jpeg"
-];
-
-const photoTitles = [
-  "My Favourite Kind of Together","That Beautiful Smile","A Memory I Treasure",
-  "Side by Side","My Sweetest Person","A Little Moment of Happiness",
-  "Our Story, Our Memories","A Dua for Your Future","Keep That Light in Your Heart",
-  "One More Memory, One More Prayer"
-];
-
-const photoCaptions = [
-  "Some moments feel peaceful without needing anything special. Being beside you is one of those little blessings I treasure.",
-  "I pray Allah always gives you reasons to smile from your heart.",
-  "Every picture keeps a little piece of a day we lived.",
-  "May we always encourage one another and celebrate each other's growth.",
-  "Your happiness matters to me. I pray your future is full of peace.",
-  "Sometimes the smallest moments become the ones we remember most.",
-  "Our story is made from little moments and shared smiles.",
-  "May Allah open the right doors for you and make good dreams easier to achieve.",
-  "May this new year bring you courage, good health and happiness.",
-  "Happy birthday, my princess. May Allah bless every step ahead."
-];
-
-/* Change these names if your uploaded video filenames differ. */
-const videoFiles = [
-  {file:"wishes.mp4", title:"My Birthday Wishes to You ♡"},
-  {file:"edit1.mp4", title:"A Memory Made with Love"},
-  {file:"edit2.mp4", title:"Another Little Piece of Us"}
-];
-
-function toast(message){
-  const el=document.getElementById("toast");
-  el.textContent=message;
-  el.style.display="block";
-  clearTimeout(window.toastTimer);
-  window.toastTimer=setTimeout(()=>el.style.display="none",3500);
-}
-
-function showWebsite(){
-  document.getElementById("loginScreen").classList.add("hidden");
-  document.getElementById("website").classList.remove("hidden");
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-async function loadStorageFiles(){
-  const photoGrid=document.getElementById("photoGrid");
-  const videoGrid=document.getElementById("videoGrid");
-  photoGrid.replaceChildren();
-  videoGrid.replaceChildren();
-
-  for(let i=0;i<photoFiles.length;i++){
-    const {data,error}=await supabaseClient.storage
-      .from(STORAGE_BUCKET).createSignedUrl(photoFiles[i],3600);
-    const card=document.createElement("article");
-    card.className="card";
-    if(error){
-      const message=document.createElement("p");
-      message.textContent="Photo not found in Storage: "+photoFiles[i];
-      card.append(message);
-    }else{
-      const img=document.createElement("img");
-      img.src=data.signedUrl;
-      img.alt="Personal memory";
-      img.loading="lazy";
-      const title=document.createElement("h3");
-      title.textContent=photoTitles[i]||"A Memory for You";
-      const caption=document.createElement("p");
-      caption.textContent=photoCaptions[i]||"A little memory saved with love.";
-      card.append(img,title,caption);
-    }
-    photoGrid.append(card);
-  }
-
-  for(const video of videoFiles){
-    const {data,error}=await supabaseClient.storage
-      .from(STORAGE_BUCKET).createSignedUrl(video.file,3600);
-    const card=document.createElement("article");
-    card.className="video-card";
-    const title=document.createElement("h3");
-    title.textContent=video.title;
-    card.append(title);
-    if(error){
-      const message=document.createElement("p");
-      message.textContent="Video not found in Storage: "+video.file;
-      card.append(message);
-    }else{
-      const player=document.createElement("video");
-      player.controls=true;
-      player.playsInline=true;
-      player.preload="metadata";
-      player.src=data.signedUrl;
-      card.append(player);
-    }
-    videoGrid.append(card);
-  }
-}
-
-document.getElementById("loginForm").addEventListener("submit",async function(event){
+$("replyForm").addEventListener("submit", event => {
   event.preventDefault();
-  const email=document.getElementById("email").value.trim();
-  const password=document.getElementById("password").value;
-  const error=document.getElementById("loginError");
-  const button=document.getElementById("loginButton");
-
-  error.textContent="";
-  button.disabled=true;
-  button.textContent="Opening your surprise… ♡";
-
-  try{
-    if(SUPABASE_URL.includes("PASTE_YOUR") ||
-       SUPABASE_PUBLISHABLE_KEY.includes("PASTE_YOUR")){
-      throw new Error("Add your Supabase Project URL and Publishable key in the code first.");
-    }
-
-    const {data,error:signInError}=await supabaseClient.auth.signInWithPassword({
-      email,password
-    });
-    if(signInError) throw signInError;
-
-    showWebsite();
-    toast("Welcome to your little world, Shaiduuuuuu ♡");
-    await loadStorageFiles();
-  }catch(err){
-    error.textContent=err.message.includes("Add your Supabase")
-      ? "Setup needed: add your Supabase Project URL and Publishable key in the code."
-      : "Couldn't sign in or load the surprise. Check the account, Storage filenames and permissions.";
-    console.error("Login or Storage error:",err);
-  }finally{
-    button.disabled=false;
-    button.textContent="Open My Surprise ♡";
+  const name = $("replyName").value.trim() || "Shaheeda";
+  const message = $("replyMessage").value.trim();
+  if (!message) {
+    toast("Write a little message first ♡");
+    return;
   }
+  const text =
+    "Assalamu alaikum Fahiz ❤️\n\nIt's " + name +
+    ". Here is my reply to your birthday surprise:\n\n" +
+    message + "\n\n— Sent from your birthday website";
+  const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
+  window.open(url, "_blank", "noopener,noreferrer");
 });
 
-document.getElementById("logoutButton").addEventListener("click",async()=>{
-  await supabaseClient.auth.signOut();
-  document.getElementById("website").classList.add("hidden");
-  document.getElementById("loginScreen").classList.remove("hidden");
-  document.getElementById("password").value="";
-  window.scrollTo({top:0,behavior:"smooth"});
-});
-
-document.getElementById("replyForm").addEventListener("submit",function(event){
-  event.preventDefault();
-  const name=document.getElementById("replyName").value.trim()||"Shaheeda";
-  const message=document.getElementById("replyMessage").value.trim();
-  if(!message){toast("Write a little message first ♡");return;}
-  const text="Assalamu alaikum Fahiz ❤️\n\nIt's "+name+". Here is my reply to your birthday surprise:\n\n"+message+"\n\n— Sent from your birthday website";
-  window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(text),"_blank","noopener,noreferrer");
-});
-
-/* If an existing session is present, restore it. */
-(async()=>{
-  if(SUPABASE_URL.includes("PASTE_YOUR") ||
-     SUPABASE_PUBLISHABLE_KEY.includes("PASTE_YOUR")) return;
-  const {data}=await supabaseClient.auth.getSession();
-  if(data.session){
-    showWebsite();
-    await loadStorageFiles();
-  }
-})();
+const particles = $("particles");
+for (let i = 0; i < 28; i++) {
+  const p = document.createElement("span");
+  p.className = "particle";
+  p.textContent = ["♥","♡","✦","✧"][i % 4];
+  p.style.left = Math.random() * 100 + "%";
+  p.style.fontSize = (12 + Math.random() * 20) + "px";
+  p.style.animationDuration = (10 + Math.random() * 18) + "s";
+  p.style.animationDelay = (-Math.random() * 25) + "s";
+  p.style.setProperty("--drift", (Math.random() * 120 - 60) + "px");
+  particles.appendChild(p);
+}
 </script>
 </body>
 </html>
