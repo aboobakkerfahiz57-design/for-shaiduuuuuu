@@ -383,29 +383,40 @@ function closeMemory(){
   $("memoryLarge").src="";
 }
 
-async function openSurprise(){
-  $("birthdaySurprise").classList.remove("hidden");
-  const video=$("surpriseVideo");
+async function openSurprise() {
+  const modal = document.getElementById("birthdaySurprise");
+  const video = document.getElementById("surpriseVideo");
+
+  modal.classList.remove("hidden");
   video.pause();
   video.removeAttribute("src");
+  video.load();
 
-  const file=fileByName("wishes.mp4") ||
-    currentFiles.find(f=>/wish/i.test(f.name)&&/\.(mp4|webm|mov|m4v)$/i.test(f.name));
+  const file = currentFiles.find(
+    f => f.name === "WhatsApp Video 2026-10-24 at 12.01.01 PM.mp4"
+  );
 
-  if(!file){
-    toast("Birthday-wishes video was not found. Check its filename in Storage.");
+  if (!file) {
+    toast("Birthday-wishes video not found in Storage.");
     return;
   }
-  try{
-    video.src=await signedUrl(file.name);
+
+  try {
+    const url = await signedUrl(file.name);
+    video.src = url;
     video.load();
-    try{await video.play();}
-    catch(e){toast("Your surprise is ready! Press Play to watch ❤️");}
-  }catch(error){
+
+    try {
+      await video.play();
+    } catch (e) {
+      toast("Your surprise is ready ❤️ Press Play to watch.");
+    }
+  } catch (error) {
     console.error(error);
-    toast("Could not open your surprise video. Check Storage access.");
+    toast("Could not load the birthday-wishes video. Please check Storage access.");
   }
 }
+
 function closeSurprise(){
   const video=$("surpriseVideo");
   video.pause();
